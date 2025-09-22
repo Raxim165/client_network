@@ -1,7 +1,7 @@
 import axios from "axios";
 // username, email, dateBirth, password
 
-export const api = axios.create({ baseURL: "http://127.1.0.1:3000", })
+export const api = axios.create({ baseURL: "https://server-network.onrender.com", })
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");

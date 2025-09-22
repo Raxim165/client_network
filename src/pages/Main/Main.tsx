@@ -35,6 +35,5 @@ export const MainPage = () => {
     case "loading": return <Loader />;
     case "error": return <p>{state.error}</p>;
     case "success": return renderSuccessState(state.users);
-    // case "success": return <Loader />;
   }
 }

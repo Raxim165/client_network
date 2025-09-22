@@ -29,10 +29,10 @@ export const Chat = () => {
   // const longPressTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    fetch(`http://127.1.0.1:3000/messages?myUserId=${myUserId}&recipientId=${recipientId}`)
+    fetch(`https://server-network.onrender.com/messages?myUserId=${myUserId}&recipientId=${recipientId}`)
       .then((res) => res.json()).then(setMessages);
 
-    const socket = new WebSocket('ws://127.1.0.1:3000');
+    const socket = new WebSocket('wss://server-network.onrender.com');
     socketRef.current = socket;
     socket.onopen = () =>
       socket.send(JSON.stringify({ type: 'login', myUserId, recipientId, username }));

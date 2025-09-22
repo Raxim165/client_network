@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Single Page Apps for GitHub Pages</title>
+    <script type="text/javascript">
+
+      var segments = window.location.pathname.split('/').filter(segment => segment !== '');
+      var base = '/Movies';
+      var redirect = base + '/?/' + segments.splice(1).join('/');
+
+      if (window.location.search) {
+        redirect += '&' + window.location.search.slice(1).replace(/&/g, '~and~');
+      }
+
+      if (window.location.hash) {
+        redirect += window.location.hash;
+      }
+      window.location.replace(redirect);
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
