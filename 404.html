@@ -1,25 +1,28 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Single Page Apps for GitHub Pages</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/client_network/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
     <script type="text/javascript">
 
-      var segments = window.location.pathname.split('/').filter(segment => segment !== '');
-      var base = '/Movies';
-      var redirect = base + '/?/' + segments.splice(1).join('/');
-
-      if (window.location.search) {
-        redirect += '&' + window.location.search.slice(1).replace(/&/g, '~and~');
-      }
-
-      if (window.location.hash) {
-        redirect += window.location.hash;
-      }
-      window.location.replace(redirect);
-
+      (function(l) {
+        if (l.search[1] === '/client_network' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    
     </script>
+    <script type="module" crossorigin src="/client_network/assets/index-EfJmDHsc.js"></script>
+    <link rel="stylesheet" crossorigin href="/client_network/assets/index-w8sM3x76.css">
   </head>
   <body>
+    <div id="root"></div>
   </body>
 </html>
