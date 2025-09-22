@@ -1,0 +1,83 @@
+.chats {
+  display: flex;
+  background-color: #121212;
+  height: calc(100vh - 75px);
+  overflow: hidden;
+  position: relative;
+}
+
+.hamburger {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 30;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Активное состояние (крестик) */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+
+.chat-list {
+  padding-top: 60px;
+  width: 0px;
+  border: 1px solid #444;
+  border-top: none;
+
+  overflow: hidden;
+  transition: width 0.3s ease-in-out;
+}
+
+.chat-list.open {
+  width: 150px;
+}
+
+.chat-link {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 10px 25px;
+  color: #fff;
+  font-size: 25px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.chat-link:hover {
+  background-color: #3b3b3b;
+}
+
+.chat-link:focus {
+  color: #a45ee6;
+}
+
+.chat-content {
+  flex: 1;
+  background: #121212;
+  transition: margin-left 0.3s ease-in-out;
+}
