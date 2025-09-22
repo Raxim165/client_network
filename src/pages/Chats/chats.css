@@ -1,11 +1,14 @@
 .chats {
-  display: flex;
+  display: grid;
+  grid-template-columns: 180px 1fr; /* панель + чат */
   background-color: #121212;
   height: calc(100vh - 75px);
   overflow: hidden;
   position: relative;
+  transition: grid-template-columns 0.3s ease-in-out;
 }
 
+/* гамбургер */
 .hamburger {
   position: absolute;
   top: 15px;
@@ -21,7 +24,6 @@
   padding: 0;
   z-index: 30;
 }
-
 .hamburger span {
   display: block;
   height: 3px;
@@ -29,55 +31,53 @@
   border-radius: 2px;
   transition: all 0.3s ease-in-out;
 }
-
-/* Активное состояние (крестик) */
 .hamburger.active span:nth-child(1) {
   transform: rotate(45deg) translate(7px, 7px);
 }
-
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
-
 .hamburger.active span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-
+/* левая панель */
 .chat-list {
-  padding-top: 60px;
-  width: 0px;
-  border: 1px solid #444;
-  border-top: none;
-
-  overflow: hidden;
-  transition: width 0.3s ease-in-out;
-}
-
-.chat-list.open {
-  width: 150px;
+  padding-top: 50px;
+  background-color: #121212;
+  height: 100%;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+  z-index: 10;
 }
 
 .chat-link {
-  display: inline-block;
-  width: 100%;
-  cursor: pointer;
-  padding: 10px 25px;
-  color: #fff;
-  font-size: 25px;
-  transition: background-color 0.3s ease-in-out;
+  padding: 10px 20px;
+  display: block;
 }
 
-.chat-link:hover {
-  background-color: #3b3b3b;
+/* на мобилке панель absolute и уезжает */
+@media (max-width: 550px) {
+  .chats {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateX(0);
+  }
+
+  .chat-list.close {
+    transform: translateX(-100%);
+  }
 }
 
-.chat-link:focus {
-  color: #a45ee6;
-}
-
-.chat-content {
-  flex: 1;
-  background: #121212;
-  transition: margin-left 0.3s ease-in-out;
+/* на десктопе панель сдвигает чат */
+@media (min-width: 551px) {
+  .chats.closed {
+    grid-template-columns: 0 1fr; /* панель схлопывается */
+  }
 }

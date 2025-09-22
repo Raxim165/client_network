@@ -1,5 +1,4 @@
 import { z } from "zod";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useIsMyAccount } from "../store/isMyAccount";
 import { useSessionStore } from "../store/useSessionStore";

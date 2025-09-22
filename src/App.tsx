@@ -8,7 +8,7 @@ import { Chat } from './ui/Chat/Chat'
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='client_network'>
       <div className='container'>
         <Header />
         <main>

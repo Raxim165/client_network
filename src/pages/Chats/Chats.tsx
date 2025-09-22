@@ -4,7 +4,6 @@ import { Loader } from '../../ui/Loader/Loader';
 import { useGetUsers, type Users } from '../../api/users';
 import { useSessionStore } from '../../store/useSessionStore';
 import { useState } from 'react';
-import { is } from 'zod/locales';
 
 export const Chats = () => {
   const { state } = useGetUsers();
@@ -12,16 +11,17 @@ export const Chats = () => {
   const [isOpenSidebar , setIsOpenSidebar] = useState(true);
 
   const renderSuccessState = (users: Users[]) => (
-    <div className='chats'>
+    <div className={`chats ${isOpenSidebar ? "" : "closed"}`}>
       <button
-        className={`hamburger ${isOpenSidebar ? 'active' : ''}`}
+        className={`hamburger ${isOpenSidebar ? "active" : ""}`}
         onClick={() => setIsOpenSidebar(!isOpenSidebar)}
       >
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <div className={`chat-list ${isOpenSidebar ? 'open' : ''}`}>
+  
+      <div className={`chat-list ${isOpenSidebar ? "" : "close"}`}>
         <ul>
           {users.map(user => (
             <li key={user._id}>
@@ -30,8 +30,9 @@ export const Chats = () => {
                 onClick={() => {
                   setRecipientId(user._id);
                   setRecipientName(user.username);
+                  setIsOpenSidebar(!isOpenSidebar);
                 }}
-                className='chat-link'
+                className="chat-link"
               >
                 {user.username}
               </Link>
@@ -39,7 +40,7 @@ export const Chats = () => {
           ))}
         </ul>
       </div>
-      <section className='chat-content' >
+      <section className="chat-content">
         <Outlet />
       </section>
     </div>
